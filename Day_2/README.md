@@ -1,23 +1,21 @@
-Terraform Practice - Day 2
+# Terraform Practice - Day 2
 
 This project is part of Terraform recall and practice.
 
-Overview
+## Overview
 
 In Day 2, I expanded my Terraform practice to make infrastructure definitions more modular, dynamic, and clean by separating configurations, parameterizing values with variables, and querying generated values using outputs.
 
 The configuration demonstrates:
 
-Organizing Terraform configurations across multiple files (main.tf, variables.tf, outputs.tf)
+* Organizing Terraform configurations across multiple files (`main.tf`, `variables.tf`, `outputs.tf`)
+* Defining and using input variables for dynamic configurations
+* Handling resource outputs to expose infrastructure metadata
+* Provisioning AWS resources with flexible, parameterized values
 
-Defining and using input variables for dynamic configurations
+## Architecture
 
-Handling resource outputs to expose infrastructure metadata
-
-Provisioning AWS resources with flexible, parameterized values
-
-Architecture
-
+```text
 Terraform Configuration (main.tf / variables.tf / outputs.tf)
     |
     v
@@ -29,84 +27,84 @@ AWS Infrastructure Components
     +-- Region: Configured via variables
     +-- Resource Provisioning (Parameterized AMI, Instance Type, Networking)
     +-- Output Attributes (Public IPs, Resource IDs)
+```
 
-
-Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have:
 
-Terraform installed
+* Terraform installed
+* AWS CLI installed
+* AWS credentials configured
+* An AWS account
+* Any existing VPC/Subnet IDs or Key Pairs needed for parameter values
 
-AWS CLI installed
+## Terraform Commands
 
-AWS credentials configured
+### 1. Initialize Terraform
 
-An AWS account
-
-Any existing VPC/Subnet IDs or Key Pairs needed for parameter values
-
-Terraform Commands
-
-1. Initialize Terraform
-
+```bash
 terraform init
+```
 
+### 2. Format the Configuration
 
-2. Format the Configuration
-
+```bash
 terraform fmt
+```
 
+### 3. Validate the Configuration
 
-3. Validate the Configuration
-
+```bash
 terraform validate
-
+```
 
 Expected output:
 
+```text
 Success! The configuration is valid.
+```
 
+### 4. Create an Execution Plan
 
-4. Create an Execution Plan
-
+```bash
 terraform plan
+```
 
+### 5. Apply the Configuration
 
-5. Apply the Configuration
-
+```bash
 terraform apply
+```
 
+### 6. Inspect Outputs
 
-6. Inspect Outputs
-
+```bash
 terraform output
+```
 
-
-7. Destroy the Infrastructure
+### 7. Destroy the Infrastructure
 
 When the practice is complete:
 
+```bash
 terraform destroy
+```
 
-
-Learning Objectives
+## Learning Objectives
 
 This exercise helps understand:
 
-Declaring and referencing input variables (variables.tf)
+1. Declaring and referencing input variables (`variables.tf`)
+2. Exposing configuration results via outputs (`outputs.tf`)
+3. Multi-file Terraform project structure
+4. Clean code formatting with `terraform fmt`
+5. Parameterizing resource attributes (e.g., AMI, instance type, tags)
+6. Terraform execution lifecycle management (`init`, `validate`, `plan`, `apply`, `destroy`)
 
-Exposing configuration results via outputs (outputs.tf)
+## Terraform Workflow
 
-Multi-file Terraform project structure
-
-Clean code formatting with terraform fmt
-
-Parameterizing resource attributes (e.g., AMI, instance type, tags)
-
-Terraform execution lifecycle management (init, validate, plan, apply, destroy)
-
-Terraform Workflow
-
+```text
 Write Configuration (main.tf, variables.tf, outputs.tf)
        |
        v
@@ -129,12 +127,12 @@ AWS Infrastructure Deployed (Check `terraform output`)
        |
        v
 terraform destroy
+```
 
+## Important Note
 
-Important Note
+Always verify your variable defaults or `terraform.tfvars` file to make sure region-specific parameters (such as AMI IDs, Subnet IDs, and Key Pairs) match your target AWS account and region before running `terraform apply`.
 
-Always verify your variable defaults or terraform.tfvars file to make sure region-specific parameters (such as AMI IDs, Subnet IDs, and Key Pairs) match your target AWS account and region before running terraform apply.
+## Author
 
-Author
-
-Sakthi Vicknesh
+**Sakthi Vicknesh**
