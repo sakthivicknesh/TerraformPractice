@@ -114,11 +114,10 @@ resource "aws_instance" "server" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update -y",
-      "sudo apt-get install -y python3-pip",
-      "sudo pip3 install flask",
-      "nohup python3 /home/ubuntu/app.py > /home/ubuntu/app.log 2>&1 &",
-      "cd /home/ubuntu",
-      "sudo python3 app.py &",
+      "sudo apt-get install -y python3-pip python3-venv",
+      "python3 -m venv /home/ubuntu/venv",
+      "/home/ubuntu/venv/bin/pip install flask",
+      "sudo nohup /home/ubuntu/venv/bin/python /home/ubuntu/app.py > /home/ubuntu/app.log 2>&1 &"
     ]
   }
 }
